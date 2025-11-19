@@ -197,7 +197,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ToggleSmartCamera"",
+                    ""name"": ""ScanButton"",
                     ""type"": ""Button"",
                     ""id"": ""bd4d8aa2-d8cf-440a-ac38-4e16ba5478b8"",
                     ""expectedControlType"": """",
@@ -276,7 +276,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ToggleSmartCamera"",
+                    ""action"": ""ScanButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -365,7 +365,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ToggleAutopilotMaster"",
+                    ""name"": ""ResetView"",
                     ""type"": ""Button"",
                     ""id"": ""90c671b7-cbd5-4b7b-8c15-7838b447cfe3"",
                     ""expectedControlType"": """",
@@ -437,7 +437,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ToggleAutopilotMaster"",
+                    ""action"": ""ResetView"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -997,7 +997,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_LeftHandle_ElevatorTrimUpLeft = m_LeftHandle.FindAction("ElevatorTrimUpLeft", throwIfNotFound: true);
         m_LeftHandle_ElevatorTrimDownRight = m_LeftHandle.FindAction("ElevatorTrimDownRight", throwIfNotFound: true);
         m_LeftHandle_ElevatorTrimUpRight = m_LeftHandle.FindAction("ElevatorTrimUpRight", throwIfNotFound: true);
-        m_LeftHandle_ToggleSmartCamera = m_LeftHandle.FindAction("ToggleSmartCamera", throwIfNotFound: true);
+        m_LeftHandle_ScanButton = m_LeftHandle.FindAction("ScanButton", throwIfNotFound: true);
         m_LeftHandle_ResetCockpitView = m_LeftHandle.FindAction("ResetCockpitView", throwIfNotFound: true);
         m_LeftHandle_SpiralJostick = m_LeftHandle.FindAction("SpiralJostick", throwIfNotFound: true);
         // RightHandle
@@ -1007,7 +1007,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_RightHandle_RudderTrimLeftTop = m_RightHandle.FindAction("RudderTrimLeftTop", throwIfNotFound: true);
         m_RightHandle_RudderTrimRightTop = m_RightHandle.FindAction("RudderTrimRightTop", throwIfNotFound: true);
         m_RightHandle_ArmAutoThrottle = m_RightHandle.FindAction("ArmAutoThrottle", throwIfNotFound: true);
-        m_RightHandle_ToggleAutopilotMaster = m_RightHandle.FindAction("ToggleAutopilotMaster", throwIfNotFound: true);
+        m_RightHandle_ResetView = m_RightHandle.FindAction("ResetView", throwIfNotFound: true);
         // SwitchPanel
         m_SwitchPanel = asset.FindActionMap("SwitchPanel", throwIfNotFound: true);
         m_SwitchPanel_AlternatorOn = m_SwitchPanel.FindAction("AlternatorOn", throwIfNotFound: true);
@@ -1242,7 +1242,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_LeftHandle_ElevatorTrimUpLeft;
     private readonly InputAction m_LeftHandle_ElevatorTrimDownRight;
     private readonly InputAction m_LeftHandle_ElevatorTrimUpRight;
-    private readonly InputAction m_LeftHandle_ToggleSmartCamera;
+    private readonly InputAction m_LeftHandle_ScanButton;
     private readonly InputAction m_LeftHandle_ResetCockpitView;
     private readonly InputAction m_LeftHandle_SpiralJostick;
     /// <summary>
@@ -1273,9 +1273,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @ElevatorTrimUpRight => m_Wrapper.m_LeftHandle_ElevatorTrimUpRight;
         /// <summary>
-        /// Provides access to the underlying input action "LeftHandle/ToggleSmartCamera".
+        /// Provides access to the underlying input action "LeftHandle/ScanButton".
         /// </summary>
-        public InputAction @ToggleSmartCamera => m_Wrapper.m_LeftHandle_ToggleSmartCamera;
+        public InputAction @ScanButton => m_Wrapper.m_LeftHandle_ScanButton;
         /// <summary>
         /// Provides access to the underlying input action "LeftHandle/ResetCockpitView".
         /// </summary>
@@ -1322,9 +1322,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @ElevatorTrimUpRight.started += instance.OnElevatorTrimUpRight;
             @ElevatorTrimUpRight.performed += instance.OnElevatorTrimUpRight;
             @ElevatorTrimUpRight.canceled += instance.OnElevatorTrimUpRight;
-            @ToggleSmartCamera.started += instance.OnToggleSmartCamera;
-            @ToggleSmartCamera.performed += instance.OnToggleSmartCamera;
-            @ToggleSmartCamera.canceled += instance.OnToggleSmartCamera;
+            @ScanButton.started += instance.OnScanButton;
+            @ScanButton.performed += instance.OnScanButton;
+            @ScanButton.canceled += instance.OnScanButton;
             @ResetCockpitView.started += instance.OnResetCockpitView;
             @ResetCockpitView.performed += instance.OnResetCockpitView;
             @ResetCockpitView.canceled += instance.OnResetCockpitView;
@@ -1354,9 +1354,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @ElevatorTrimUpRight.started -= instance.OnElevatorTrimUpRight;
             @ElevatorTrimUpRight.performed -= instance.OnElevatorTrimUpRight;
             @ElevatorTrimUpRight.canceled -= instance.OnElevatorTrimUpRight;
-            @ToggleSmartCamera.started -= instance.OnToggleSmartCamera;
-            @ToggleSmartCamera.performed -= instance.OnToggleSmartCamera;
-            @ToggleSmartCamera.canceled -= instance.OnToggleSmartCamera;
+            @ScanButton.started -= instance.OnScanButton;
+            @ScanButton.performed -= instance.OnScanButton;
+            @ScanButton.canceled -= instance.OnScanButton;
             @ResetCockpitView.started -= instance.OnResetCockpitView;
             @ResetCockpitView.performed -= instance.OnResetCockpitView;
             @ResetCockpitView.canceled -= instance.OnResetCockpitView;
@@ -1405,7 +1405,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_RightHandle_RudderTrimLeftTop;
     private readonly InputAction m_RightHandle_RudderTrimRightTop;
     private readonly InputAction m_RightHandle_ArmAutoThrottle;
-    private readonly InputAction m_RightHandle_ToggleAutopilotMaster;
+    private readonly InputAction m_RightHandle_ResetView;
     /// <summary>
     /// Provides access to input actions defined in input action map "RightHandle".
     /// </summary>
@@ -1438,9 +1438,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @ArmAutoThrottle => m_Wrapper.m_RightHandle_ArmAutoThrottle;
         /// <summary>
-        /// Provides access to the underlying input action "RightHandle/ToggleAutopilotMaster".
+        /// Provides access to the underlying input action "RightHandle/ResetView".
         /// </summary>
-        public InputAction @ToggleAutopilotMaster => m_Wrapper.m_RightHandle_ToggleAutopilotMaster;
+        public InputAction @ResetView => m_Wrapper.m_RightHandle_ResetView;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1482,9 +1482,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @ArmAutoThrottle.started += instance.OnArmAutoThrottle;
             @ArmAutoThrottle.performed += instance.OnArmAutoThrottle;
             @ArmAutoThrottle.canceled += instance.OnArmAutoThrottle;
-            @ToggleAutopilotMaster.started += instance.OnToggleAutopilotMaster;
-            @ToggleAutopilotMaster.performed += instance.OnToggleAutopilotMaster;
-            @ToggleAutopilotMaster.canceled += instance.OnToggleAutopilotMaster;
+            @ResetView.started += instance.OnResetView;
+            @ResetView.performed += instance.OnResetView;
+            @ResetView.canceled += instance.OnResetView;
         }
 
         /// <summary>
@@ -1511,9 +1511,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @ArmAutoThrottle.started -= instance.OnArmAutoThrottle;
             @ArmAutoThrottle.performed -= instance.OnArmAutoThrottle;
             @ArmAutoThrottle.canceled -= instance.OnArmAutoThrottle;
-            @ToggleAutopilotMaster.started -= instance.OnToggleAutopilotMaster;
-            @ToggleAutopilotMaster.performed -= instance.OnToggleAutopilotMaster;
-            @ToggleAutopilotMaster.canceled -= instance.OnToggleAutopilotMaster;
+            @ResetView.started -= instance.OnResetView;
+            @ResetView.performed -= instance.OnResetView;
+            @ResetView.canceled -= instance.OnResetView;
         }
 
         /// <summary>
@@ -2046,12 +2046,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnElevatorTrimUpRight(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "ToggleSmartCamera" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "ScanButton" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnToggleSmartCamera(InputAction.CallbackContext context);
+        void OnScanButton(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "ResetCockpitView" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -2110,12 +2110,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnArmAutoThrottle(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "ToggleAutopilotMaster" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "ResetView" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnToggleAutopilotMaster(InputAction.CallbackContext context);
+        void OnResetView(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "SwitchPanel" which allows adding and removing callbacks.

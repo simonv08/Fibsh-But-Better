@@ -493,6 +493,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: YawController
       objectReference: {fileID: 0}
+    - target: {fileID: 1533629748126424, guid: b2db00cc4030f47faad8506c631645eb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4904702685057778, guid: b2db00cc4030f47faad8506c631645eb, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -547,7 +551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114097211993025946, guid: b2db00cc4030f47faad8506c631645eb, type: 3}
       propertyPath: debug_ipAddress
-      value: 10.53.3.156
+      value: 10.53.3.178
       objectReference: {fileID: 0}
     - target: {fileID: 114097211993025946, guid: b2db00cc4030f47faad8506c631645eb, type: 3}
       propertyPath: device.deviceParams.hasYawLimit
@@ -824,8 +828,8 @@ GameObject:
   - component: {fileID: 2014311930}
   - component: {fileID: 2014311929}
   - component: {fileID: 2014311934}
-  - component: {fileID: 2014311933}
   - component: {fileID: 2014311935}
+  - component: {fileID: 2014311936}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -923,21 +927,6 @@ Transform:
   - {fileID: 55340896}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2014311933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2014311928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0031fb46929fe96459be16505a6ccdf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 60
-  moveSpeed: 5
-  resetSpeed: 2
 --- !u!114 &2014311934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -977,6 +966,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2014311936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014311928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06ebec3c73229e40b97bc86146c6c55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 5
+  _rotationSpeed: 100
+  _resetSpeed: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

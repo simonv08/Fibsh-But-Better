@@ -111,7 +111,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ToggleSmartCamera",
+                    "name": "ScanButton",
                     "type": "Button",
                     "id": "bd4d8aa2-d8cf-440a-ac38-4e16ba5478b8",
                     "expectedControlType": "",
@@ -190,7 +190,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ToggleSmartCamera",
+                    "action": "ScanButton",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -279,7 +279,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ToggleAutopilotMaster",
+                    "name": "ResetView",
                     "type": "Button",
                     "id": "90c671b7-cbd5-4b7b-8c15-7838b447cfe3",
                     "expectedControlType": "",
@@ -351,7 +351,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ToggleAutopilotMaster",
+                    "action": "ResetView",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

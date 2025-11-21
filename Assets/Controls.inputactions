@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "name": "Controls",
+    "maps": [
+        {
+            "name": "Submarine",
+            "id": "2bbab215-73f3-4def-b3db-2c58c3286b8b",
+            "actions": [
+                {
+                    "name": "Scan",
+                    "type": "Button",
+                    "id": "fbf79d28-1736-466e-8a04-bf9d0ac1ab2f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5f100d09-4e9d-4dc1-aaad-afc12314df27",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Scan",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

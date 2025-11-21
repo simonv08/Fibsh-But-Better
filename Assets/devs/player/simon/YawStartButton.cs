@@ -1,26 +1,39 @@
-using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using YawVR;
 
-public class YawStartup : MonoBehaviour
+public class YawStartButton : MonoBehaviour
 {
+    [SerializeField] private InputActionAsset inputActions;
+    
+    private InputAction yawOn;
+    private InputAction yawOff;
+
     private bool disableCanRun = false;
 
-    public void OnYawOn()
+    private void OnEnable()
     {
-        StartCoroutine(YawOn());
+        yawOn = inputActions.FindActionMap("SwitchPanel").FindAction("AlternatorOn");
+        yawOff = inputActions.FindActionMap("SwitchPanel").FindAction("AlternatorOff");
+    
+        yawOn.performed += OnYawOn;
+        yawOff.performed += OnYawOff;
+
+        yawOn.Enable();
+        yawOff.Enable();
     }
 
-    public void OnYawOff()
+    private void OnDisable()
     {
-        StartCoroutine(YawOff());
+        yawOn.performed -= OnYawOn;
+        yawOff.performed -= OnYawOff;
+
+        yawOn.Disable();
+        yawOff.Disable();
     }
 
-    private IEnumerator YawOn()
+    private void OnYawOn(InputAction.CallbackContext context)
     {
-        // Wait 1 frame
-        yield return null;
-
         if (YawController.Instance().State == ControllerState.Connected)
         {
             YawController.Instance().StartDevice(
@@ -32,17 +45,14 @@ public class YawStartup : MonoBehaviour
         {
             Debug.LogWarning("Yaw not in a ready-to-start state: " + YawController.Instance().State);
         }
-
+        
         disableCanRun = true;
     }
-
-    private IEnumerator YawOff()
+    
+    private void OnYawOff(InputAction.CallbackContext context)
     {
-        // Wait 1 frame
-        yield return null;
-
-        if (!disableCanRun) yield break;
-
+        if (!disableCanRun) return;
+        
         if (YawController.Instance().State == ControllerState.Started)
         {
             YawController.Instance().StopDevice(

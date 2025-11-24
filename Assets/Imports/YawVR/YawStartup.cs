@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using YawVR;
 
-public class YawStartButton : MonoBehaviour
+public class YawStartup : MonoBehaviour
 {
     private bool disableCanRun = false;
 

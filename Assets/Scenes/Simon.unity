@@ -443,7 +443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114097211993025946, guid: b2db00cc4030f47faad8506c631645eb, type: 3}
       propertyPath: debug_ipAddress
-      value: 10.53.4.7
+      value: 10.53.1.25
       objectReference: {fileID: 0}
     - target: {fileID: 114097211993025946, guid: b2db00cc4030f47faad8506c631645eb, type: 3}
       propertyPath: device.deviceParams.hasYawLimit
@@ -928,8 +928,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06ebec3c73229e40b97bc86146c6c55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 5
-  _rotationSpeed: 100
+  _moveSpeed: 15
+  _rotationSpeed: 50
   _resetSpeed: 2
 --- !u!114 &2014311937
 MonoBehaviour:

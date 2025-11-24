@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,7 @@ public class SubmarineScanner : MonoBehaviour
     [SerializeField] private float maxDistance = 50f;
     [SerializeField] private LayerMask scanLayer;
     [SerializeField] private Transform raycastOrigin;
+    [SerializeField] private GameObject scanner;
 
     public event System.Action<IScannable> OnTargetLocked;
     public event System.Action<FishInfo> OnFishScanned;
@@ -35,7 +37,8 @@ public class SubmarineScanner : MonoBehaviour
 
     private void OnScanPerformed(InputAction.CallbackContext ctx)
     {
-        TryScan();
+        scanner.SetActive(true);
+        StartCoroutine(TryScan());
     }
 
     private void Update()
@@ -65,8 +68,10 @@ public class SubmarineScanner : MonoBehaviour
         }
     }
 
-    private void TryScan()
+    private IEnumerator TryScan()
     {
+        yield return new WaitForSeconds(1);
+        scanner.SetActive(false);
         if (currentTarget != null)
             OnFishScanned?.Invoke(currentTarget.GetScanData());
     }

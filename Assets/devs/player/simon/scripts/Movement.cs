@@ -2,7 +2,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// Handles player movement, steering wheel rotation input, and smooth view reset.
+/// Handles smooth underwater-style player movement, rotation, pitch trimming, 
+/// and view resetting. Uses smoothed acceleration and deceleration for all axes.
 /// </summary>
 public class Movement : MonoBehaviour
 {
@@ -10,17 +11,37 @@ public class Movement : MonoBehaviour
     // Instance Fields
     // ------------------------------
 
-    private PlayerInput _input;
-    private bool _isResetting = false;
-
+    [Header("Movement Settings")]
     [SerializeField]
     private float _moveSpeed = 5f;
 
     [SerializeField]
+    private float _acceleration = 4f;
+
+    [SerializeField]
+    private float _deceleration = 2f;
+
+    [Header("Rotation Settings")]
+    [SerializeField]
     private float _rotationSpeed = 100f;
 
     [SerializeField]
+    private float _rotationSmooth = 4f;
+
+    [Header("Pitch Settings")]
+    [SerializeField]
+    private float _pitchSmooth = 4f;
+
+    [Header("View Reset")]
+    [SerializeField]
     private float _resetSpeed = 5f;
+
+    private PlayerInput _input;
+    private bool _isResetting;
+
+    private float _currentMove;
+    private float _currentRotation;
+    private float _currentPitch;
 
     // ------------------------------
     // Unity Messages
@@ -55,25 +76,35 @@ public class Movement : MonoBehaviour
 
     private void HandleMovement()
     {
-        float forwardValue = _input.SteeringWheel.Forward.ReadValue<float>();
-        float backwardValue = _input.SteeringWheel.Backward.ReadValue<float>();
-        float moveValue = forwardValue - backwardValue;
+        float forwardInput = _input.SteeringWheel.Forward.ReadValue<float>();
+        float backwardInput = _input.SteeringWheel.Backward.ReadValue<float>();
+        float targetMove = forwardInput - backwardInput;
+
+        // Smooth acceleration/deceleration.
+        float smoothing = Mathf.Abs(targetMove) > 0.01f ? _acceleration : _deceleration;
+        _currentMove = Mathf.Lerp(_currentMove, targetMove, Time.deltaTime * smoothing);
 
         transform.Translate(
             0f,
             0f,
-            moveValue * _moveSpeed * Time.deltaTime,
+            _currentMove * _moveSpeed * Time.deltaTime,
             Space.Self
         );
     }
 
     private void HandleRotation()
     {
-        float rotationValue = _input.SteeringWheel.rotation.ReadValue<float>();
+        float targetRotation = _input.SteeringWheel.rotation.ReadValue<float>();
+
+        _currentRotation = Mathf.Lerp(
+            _currentRotation,
+            targetRotation,
+            Time.deltaTime * _rotationSmooth
+        );
 
         transform.Rotate(
             0f,
-            rotationValue * _rotationSpeed * Time.deltaTime,
+            _currentRotation * _rotationSpeed * Time.deltaTime,
             0f,
             Space.Self
         );
@@ -81,7 +112,6 @@ public class Movement : MonoBehaviour
 
     private void HandlePitch()
     {
-        // Read trim inputs
         bool trimUp =
             _input.LeftHandle.ElevatorTrimUpLeft.IsPressed() ||
             _input.LeftHandle.ElevatorTrimUpRight.IsPressed();
@@ -90,25 +120,29 @@ public class Movement : MonoBehaviour
             _input.LeftHandle.ElevatorTrimDownLeft.IsPressed() ||
             _input.LeftHandle.ElevatorTrimDownRight.IsPressed();
 
-        float pitchDirection = 0f;
-
+        float targetPitch = 0f;
         if (trimUp)
         {
-            pitchDirection = -1f; // negative X = pitch nose up
+            targetPitch = -1f;
         }
         else if (trimDown)
         {
-            pitchDirection = 1f; // positive X = pitch nose down
+            targetPitch = 1f;
         }
 
+        _currentPitch = Mathf.Lerp(
+            _currentPitch,
+            targetPitch,
+            Time.deltaTime * _pitchSmooth
+        );
+
         transform.Rotate(
-            pitchDirection * _rotationSpeed * Time.deltaTime,
+            _currentPitch * _rotationSpeed * Time.deltaTime,
             0f,
             0f,
             Space.Self
         );
     }
-
 
     private void HandleViewReset()
     {
@@ -128,7 +162,7 @@ public class Movement : MonoBehaviour
             Time.deltaTime * _resetSpeed
         );
 
-        // stop when close enough
+        // Stop when close to forward orientation.
         if (Quaternion.Angle(transform.rotation, Quaternion.identity) < 0.5f)
         {
             transform.rotation = Quaternion.identity;

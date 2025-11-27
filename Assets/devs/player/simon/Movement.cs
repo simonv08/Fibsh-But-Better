@@ -33,20 +33,12 @@ public class Movement : MonoBehaviour
 
     private void OnEnable()
     {
-        _input.SteeringWheel.Enable();
-        _input.LeftHandle.Enable();
-        _input.RightHandle.Enable();
-        _input.SwitchPanel.Enable();
-        _input.StarterSwitch.Enable();
+        _input.Enable();
     }
 
     private void OnDisable()
     {
-        _input.SteeringWheel.Disable();
-        _input.LeftHandle.Disable();
-        _input.RightHandle.Disable();
-        _input.SwitchPanel.Disable();
-        _input.StarterSwitch.Disable();
+        _input.Disable();
     }
 
     private void Update()

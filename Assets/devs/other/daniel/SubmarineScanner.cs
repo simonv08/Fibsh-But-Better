@@ -2,43 +2,57 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Handles scanning logic for detecting scannable targets.
+/// </summary>
 public class SubmarineScanner : MonoBehaviour
 {
-    [SerializeField] private float maxDistance = 50f;
-    [SerializeField] private LayerMask scanLayer;
-    [SerializeField] private Transform raycastOrigin;
-    [SerializeField] private GameObject scanner;
+    // ------------------------------
+    // Instance Fields
+    // ------------------------------
+
+    [SerializeField]
+    private float _maxDistance = 50f;
+
+    [SerializeField]
+    private LayerMask _scanLayer;
+
+    [SerializeField]
+    private Transform _raycastOrigin;
+
+    [SerializeField]
+    private GameObject _scanner;
+
+    private PlayerInput _input;
+    private IScannable _currentTarget;
+
+    // ------------------------------
+    // Events
+    // ------------------------------
 
     public event System.Action<IScannable> OnTargetLocked;
     public event System.Action<FishInfo> OnFishScanned;
     public event System.Action OnTargetLost;
 
-    private IScannable currentTarget;
-
-    // reference naar jouw input actions
-    private Controls controls;
+    // ------------------------------
+    // Unity Messages
+    // ------------------------------
 
     private void Awake()
     {
-        controls = new Controls();
+        _input = new PlayerInput();
     }
 
     private void OnEnable()
     {
-        controls.Submarine.Enable();
-        controls.Submarine.Scan.performed += OnScanPerformed;
+        _input.LeftHandle.Enable();
+        _input.LeftHandle.ScanButton.performed += OnScanPerformed;
     }
 
     private void OnDisable()
     {
-        controls.Submarine.Scan.performed -= OnScanPerformed;
-        controls.Submarine.Disable();
-    }
-
-    private void OnScanPerformed(InputAction.CallbackContext ctx)
-    {
-        scanner.SetActive(true);
-        StartCoroutine(TryScan());
+        _input.LeftHandle.ScanButton.performed -= OnScanPerformed;
+        _input.LeftHandle.Disable();
     }
 
     private void Update()
@@ -46,33 +60,53 @@ public class SubmarineScanner : MonoBehaviour
         DoRaycast();
     }
 
+    // ------------------------------
+    // Private Methods
+    // ------------------------------
+
+    private void OnScanPerformed(InputAction.CallbackContext context)
+    {
+        _scanner.SetActive(true);
+        StartCoroutine(TryScan());
+    }
+
     private void DoRaycast()
     {
-        if (Physics.SphereCast(raycastOrigin.position, 1.5f, raycastOrigin.forward, out RaycastHit hit, maxDistance, scanLayer))
+        if (Physics.SphereCast(
+                _raycastOrigin.position,
+                1.5f,
+                _raycastOrigin.forward,
+                out RaycastHit hit,
+                _maxDistance,
+                _scanLayer))
         {
             if (hit.collider.TryGetComponent(out IScannable scannable))
             {
-                if (currentTarget != scannable)
+                if (_currentTarget != scannable)
                 {
-                    currentTarget = scannable;
+                    _currentTarget = scannable;
                     OnTargetLocked?.Invoke(scannable);
                 }
                 return;
             }
         }
 
-        if (currentTarget != null)
+        if (_currentTarget != null)
         {
-            currentTarget = null;
+            _currentTarget = null;
             OnTargetLost?.Invoke();
         }
     }
 
     private IEnumerator TryScan()
     {
-        yield return new WaitForSeconds(1);
-        scanner.SetActive(false);
-        if (currentTarget != null)
-            OnFishScanned?.Invoke(currentTarget.GetScanData());
+        yield return new WaitForSeconds(1f);
+
+        _scanner.SetActive(false);
+
+        if (_currentTarget != null)
+        {
+            OnFishScanned?.Invoke(_currentTarget.GetScanData());
+        }
     }
 }

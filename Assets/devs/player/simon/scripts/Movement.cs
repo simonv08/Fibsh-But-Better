@@ -59,8 +59,6 @@ public class Movement : MonoBehaviour
     private void FixedUpdate()
     {
         ApplyMovementVelocity();
-        DampAngularVelocity();
-        RemoveSidewaysDrift();
     }
 
     // ---------------------------------------------------------
@@ -84,7 +82,7 @@ public class Movement : MonoBehaviour
     {
         Vector3 forwardVel = transform.forward * (_currentMove * _moveSpeed);
 
-        Vector3 velocity = _rigidbody.velocity;
+        Vector3 velocity = _rigidbody.linearVelocity;
 
         // Keep only the forward component of velocity
         Vector3 forwardComponent = Vector3.Project(velocity, transform.forward);
@@ -96,7 +94,7 @@ public class Movement : MonoBehaviour
             Time.fixedDeltaTime * _acceleration
         );
 
-        _rigidbody.velocity = newForward;
+        _rigidbody.linearVelocity = newForward;
     }
 
     // ---------------------------------------------------------

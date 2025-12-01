@@ -49,7 +49,7 @@ public class RotationFix : MonoBehaviour
     private void RemoveSidewaysDrift()
     {
         // Keeps movement aligned with forward direction.
-        Vector3 velocity = _rigidbody.velocity;
+        Vector3 velocity = _rigidbody.linearVelocity;
         Vector3 forward = transform.forward;
 
         // Extract only the forward movement.
@@ -57,6 +57,6 @@ public class RotationFix : MonoBehaviour
         Vector3 sidewaysComponent = velocity - forwardComponent;
 
         // Remove drifting gradually for smooth underwater feeling.
-        _rigidbody.velocity -= sidewaysComponent * (Time.fixedDeltaTime * _driftHardness);
+        _rigidbody.linearVelocity -= sidewaysComponent * (Time.fixedDeltaTime * _driftHardness);
     }
 }

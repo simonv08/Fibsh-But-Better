@@ -2,133 +2,140 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 /// <summary>
-/// Handles smooth underwater-style player movement, rotation, pitch trimming, 
-/// and view resetting. Uses smoothed acceleration and deceleration for all axes.
+/// Smooth submarine-style movement using velocity-based motion.
+/// Fixes collision drifting, stabilizes rotation, and supports yaw/pitch trim.
 /// </summary>
+[RequireComponent(typeof(Rigidbody))]
 public class Movement : MonoBehaviour
 {
-    // ------------------------------
-    // Instance Fields
-    // ------------------------------
+    private const float RESET_THRESHOLD = 0.5f;
 
     [Header("Movement Settings")]
-    [SerializeField]
-    private float _moveSpeed = 5f;
-
-    [SerializeField]
-    private float _acceleration = 4f;
-
-    [SerializeField]
-    private float _deceleration = 2f;
+    [SerializeField] private float _moveSpeed = 5f;
+    [SerializeField] private float _acceleration = 4f;
+    [SerializeField] private float _deceleration = 2f;
 
     [Header("Rotation Settings")]
-    [SerializeField]
-    private float _rotationSpeed = 100f;
-
-    [SerializeField]
-    private float _rotationSmooth = 4f;
+    [SerializeField] private float _rotationSpeed = 100f;
+    [SerializeField] private float _rotationSmooth = 4f;
 
     [Header("Pitch Settings")]
-    [SerializeField]
-    private float _pitchSmooth = 4f;
+    [SerializeField] private float _pitchSmooth = 4f;
+
+    [Header("Stability")]
+    [SerializeField] private float _angularDamping = 4f;
 
     [Header("View Reset")]
-    [SerializeField]
-    private float _resetSpeed = 5f;
+    [SerializeField] private float _resetSpeed = 5f;
 
     private PlayerInput _input;
+    private Rigidbody _rigidbody;
+
     private bool _isResetting;
 
     private float _currentMove;
-    private float _currentRotation;
+    private float _currentYaw;
     private float _currentPitch;
-
-    // ------------------------------
-    // Unity Messages
-    // ------------------------------
 
     private void Awake()
     {
         _input = new PlayerInput();
+        _rigidbody = GetComponent<Rigidbody>();
+
+        _rigidbody.useGravity = false;
+        _rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
     }
 
-    private void OnEnable()
-    {
-        _input.Enable();
-    }
-
-    private void OnDisable()
-    {
-        _input.Disable();
-    }
+    private void OnEnable() => _input.Enable();
+    private void OnDisable() => _input.Disable();
 
     private void Update()
     {
-        HandleMovement();
         HandleRotation();
-        HandlePitch();
         HandleViewReset();
+        HandleMovementInput();
     }
 
-    // ------------------------------
-    // Private Methods
-    // ------------------------------
-
-    private void HandleMovement()
+    private void FixedUpdate()
     {
-        float forwardInput = _input.SteeringWheel.Forward.ReadValue<float>();
-        float backwardInput = _input.SteeringWheel.Backward.ReadValue<float>();
-        float targetMove = forwardInput - backwardInput;
-
-        // Smooth acceleration/deceleration.
-        float smoothing = Mathf.Abs(targetMove) > 0.01f ? _acceleration : _deceleration;
-        _currentMove = Mathf.Lerp(_currentMove, targetMove, Time.deltaTime * smoothing);
-
-        transform.Translate(
-            0f,
-            0f,
-            _currentMove * _moveSpeed * Time.deltaTime,
-            Space.Self
-        );
+        ApplyMovementVelocity();
+        DampAngularVelocity();
+        RemoveSidewaysDrift();
     }
+
+    // ---------------------------------------------------------
+    // Movement (Velocity-based)
+    // ---------------------------------------------------------
+
+    private void HandleMovementInput()
+    {
+        float forward = _input.SteeringWheel.Forward.ReadValue<float>();
+        float backward = _input.SteeringWheel.Backward.ReadValue<float>();
+        float target = forward - backward;
+
+        float smoothing = (Mathf.Abs(target) > 0.01f)
+            ? _acceleration
+            : _deceleration;
+
+        _currentMove = Mathf.Lerp(_currentMove, target, Time.deltaTime * smoothing);
+    }
+
+    private void ApplyMovementVelocity()
+    {
+        Vector3 forwardVel = transform.forward * (_currentMove * _moveSpeed);
+
+        Vector3 velocity = _rigidbody.velocity;
+
+        // Keep only the forward component of velocity
+        Vector3 forwardComponent = Vector3.Project(velocity, transform.forward);
+
+        // Smoothly move toward the desired forward velocity
+        Vector3 newForward = Vector3.Lerp(
+            forwardComponent,
+            forwardVel,
+            Time.fixedDeltaTime * _acceleration
+        );
+
+        _rigidbody.velocity = newForward;
+    }
+
+    // ---------------------------------------------------------
+    // Rotation
+    // ---------------------------------------------------------
 
     private void HandleRotation()
     {
-        float targetRotation = _input.SteeringWheel.rotation.ReadValue<float>();
+        float yaw = ComputeYaw();
+        float pitch = ComputePitch();
 
-        _currentRotation = Mathf.Lerp(
-            _currentRotation,
-            targetRotation,
+        Quaternion deltaRot = Quaternion.Euler(pitch, yaw, 0f);
+        _rigidbody.MoveRotation(_rigidbody.rotation * deltaRot);
+    }
+
+    private float ComputeYaw()
+    {
+        float targetYaw = _input.SteeringWheel.rotation.ReadValue<float>();
+
+        _currentYaw = Mathf.Lerp(
+            _currentYaw,
+            targetYaw,
             Time.deltaTime * _rotationSmooth
         );
 
-        transform.Rotate(
-            0f,
-            _currentRotation * _rotationSpeed * Time.deltaTime,
-            0f,
-            Space.Self
-        );
+        return _currentYaw * _rotationSpeed * Time.deltaTime;
     }
 
-    private void HandlePitch()
+    private float ComputePitch()
     {
-        bool trimUp =
+        bool up =
             _input.LeftHandle.ElevatorTrimUpLeft.IsPressed() ||
             _input.LeftHandle.ElevatorTrimUpRight.IsPressed();
 
-        bool trimDown =
+        bool down =
             _input.LeftHandle.ElevatorTrimDownLeft.IsPressed() ||
             _input.LeftHandle.ElevatorTrimDownRight.IsPressed();
 
-        float targetPitch = 0f;
-        if (trimUp)
-        {
-            targetPitch = -1f;
-        }
-        else if (trimDown)
-        {
-            targetPitch = 1f;
-        }
+        float targetPitch = up ? -1f : down ? 1f : 0f;
 
         _currentPitch = Mathf.Lerp(
             _currentPitch,
@@ -136,36 +143,56 @@ public class Movement : MonoBehaviour
             Time.deltaTime * _pitchSmooth
         );
 
-        transform.Rotate(
-            _currentPitch * _rotationSpeed * Time.deltaTime,
-            0f,
-            0f,
-            Space.Self
-        );
+        return _currentPitch * _rotationSpeed * Time.deltaTime;
     }
+
+    // // ---------------------------------------------------------
+    // // Stability
+    // // ---------------------------------------------------------
+    //
+    // private void DampAngularVelocity()
+    // {
+    //     // Soft angular damping without freezing rotation
+    //     _rigidbody.angularVelocity *=
+    //         Mathf.Clamp01(1f - (Time.fixedDeltaTime * _angularDamping));
+    // }
+    //
+    // private void RemoveSidewaysDrift()
+    // {
+    //     Vector3 velocity = _rigidbody.velocity;
+    //
+    //     // Keep ONLY the forward velocity component
+    //     Vector3 forwardComponent = Vector3.Project(velocity, transform.forward);
+    //
+    //     // Hard drift removal — no drifting after collisions
+    //     _rigidbody.velocity = forwardComponent;
+    // }
+
+    // ---------------------------------------------------------
+    // View Reset
+    // ---------------------------------------------------------
 
     private void HandleViewReset()
     {
         if (_input.RightHandle.ResetView.triggered)
-        {
             _isResetting = true;
-        }
 
         if (!_isResetting)
-        {
             return;
-        }
 
-        transform.rotation = Quaternion.Slerp(
-            transform.rotation,
-            Quaternion.identity,
+        Quaternion target = Quaternion.identity;
+
+        Quaternion smoothed = Quaternion.Slerp(
+            _rigidbody.rotation,
+            target,
             Time.deltaTime * _resetSpeed
         );
 
-        // Stop when close to forward orientation.
-        if (Quaternion.Angle(transform.rotation, Quaternion.identity) < 0.5f)
+        _rigidbody.MoveRotation(smoothed);
+
+        if (Quaternion.Angle(_rigidbody.rotation, target) < RESET_THRESHOLD)
         {
-            transform.rotation = Quaternion.identity;
+            _rigidbody.rotation = target;
             _isResetting = false;
         }
     }

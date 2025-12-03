@@ -22,9 +22,6 @@ public class Movement : MonoBehaviour
     [Header("Pitch Settings")]
     [SerializeField] private float _pitchSmooth = 4f;
 
-    [Header("Stability")]
-    [SerializeField] private float _angularDamping = 4f;
-
     [Header("View Reset")]
     [SerializeField] private float _resetSpeed = 5f;
 
@@ -143,28 +140,6 @@ public class Movement : MonoBehaviour
 
         return _currentPitch * _rotationSpeed * Time.deltaTime;
     }
-
-    // // ---------------------------------------------------------
-    // // Stability
-    // // ---------------------------------------------------------
-    //
-    // private void DampAngularVelocity()
-    // {
-    //     // Soft angular damping without freezing rotation
-    //     _rigidbody.angularVelocity *=
-    //         Mathf.Clamp01(1f - (Time.fixedDeltaTime * _angularDamping));
-    // }
-    //
-    // private void RemoveSidewaysDrift()
-    // {
-    //     Vector3 velocity = _rigidbody.velocity;
-    //
-    //     // Keep ONLY the forward velocity component
-    //     Vector3 forwardComponent = Vector3.Project(velocity, transform.forward);
-    //
-    //     // Hard drift removal — no drifting after collisions
-    //     _rigidbody.velocity = forwardComponent;
-    // }
 
     // ---------------------------------------------------------
     // View Reset

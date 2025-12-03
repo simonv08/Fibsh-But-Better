@@ -125413,7 +125413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114097211993025946, guid: b2db00cc4030f47faad8506c631645eb, type: 3}
       propertyPath: debug_ipAddress
-      value: 10.53.2.190
+      value: 10.53.3.186
       objectReference: {fileID: 0}
     - target: {fileID: 114097211993025946, guid: b2db00cc4030f47faad8506c631645eb, type: 3}
       propertyPath: device.deviceParams.Power
@@ -169389,6 +169389,38 @@ PrefabInstance:
     - target: {fileID: 3027428662235686464, guid: 40e0c091f5ec11e41b4844c7fd1b4e6b, type: 3}
       propertyPath: m_CullingMask.m_Bits
       value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 3647135910962568280, guid: 40e0c091f5ec11e41b4844c7fd1b4e6b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754706572016071484, guid: 40e0c091f5ec11e41b4844c7fd1b4e6b, type: 3}
+      propertyPath: _moveSpeed
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754706572016071484, guid: 40e0c091f5ec11e41b4844c7fd1b4e6b, type: 3}
+      propertyPath: _resetSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754706572016071484, guid: 40e0c091f5ec11e41b4844c7fd1b4e6b, type: 3}
+      propertyPath: _pitchSmooth
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754706572016071484, guid: 40e0c091f5ec11e41b4844c7fd1b4e6b, type: 3}
+      propertyPath: _acceleration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754706572016071484, guid: 40e0c091f5ec11e41b4844c7fd1b4e6b, type: 3}
+      propertyPath: _deceleration
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754706572016071484, guid: 40e0c091f5ec11e41b4844c7fd1b4e6b, type: 3}
+      propertyPath: _rotationSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3754706572016071484, guid: 40e0c091f5ec11e41b4844c7fd1b4e6b, type: 3}
+      propertyPath: _rotationSmooth
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4861125769489868070, guid: 40e0c091f5ec11e41b4844c7fd1b4e6b, type: 3}
       propertyPath: m_LocalPosition.z

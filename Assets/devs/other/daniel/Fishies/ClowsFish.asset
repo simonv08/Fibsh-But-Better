@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e44fda2dd89d14595174d65bca680b, type: 3}
+  m_Name: ClowsFish
+  m_EditorClassIdentifier: 
+  fishName: Clown fish
+  fishDescription: saltwater fish found in the warm Indo-Pacific
+  image: {fileID: -1910316348, guid: fccf59ea547ab264f9fda65b275e62bd, type: 3}

@@ -59898,7 +59898,7 @@ GameObject:
   - component: {fileID: 1910185850}
   - component: {fileID: 1910185849}
   m_Layer: 0
-  m_Name: Directional Light (1)
+  m_Name: Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60167,9 +60167,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5716037854640093961, guid: 781600bcc8461e54a892339a37efbe52, type: 3}
+      propertyPath: connectType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5716037854640093961, guid: 781600bcc8461e54a892339a37efbe52, type: 3}
+      propertyPath: debug_ipAddress
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6061356657968942785, guid: 781600bcc8461e54a892339a37efbe52, type: 3}
       propertyPath: m_Name
-      value: YawController (1)
+      value: YawController
       objectReference: {fileID: 0}
     - target: {fileID: 9132816232338107511, guid: 781600bcc8461e54a892339a37efbe52, type: 3}
       propertyPath: cameraOffsetTransform
@@ -60300,7 +60308,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1258812521815105345, guid: d51c09fd9de184f4693af6d49618dde6, type: 3}
       propertyPath: m_Name
-      value: minimap (1)
+      value: minimap
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

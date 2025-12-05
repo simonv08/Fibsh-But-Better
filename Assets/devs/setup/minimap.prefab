@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 798266933709291154}
   m_Layer: 0
-  m_Name: minimap (1)
+  m_Name: minimap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

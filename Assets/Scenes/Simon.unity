@@ -60173,7 +60173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5716037854640093961, guid: 781600bcc8461e54a892339a37efbe52, type: 3}
       propertyPath: debug_ipAddress
-      value: 
+      value: 10.53.3.209
       objectReference: {fileID: 0}
     - target: {fileID: 6061356657968942785, guid: 781600bcc8461e54a892339a37efbe52, type: 3}
       propertyPath: m_Name
@@ -60186,8 +60186,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6061356657968942785, guid: 781600bcc8461e54a892339a37efbe52, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1284258307324156871}
   m_SourcePrefab: {fileID: 100100000, guid: 781600bcc8461e54a892339a37efbe52, type: 3}
+--- !u!1 &1284258307324156870 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6061356657968942785, guid: 781600bcc8461e54a892339a37efbe52, type: 3}
+  m_PrefabInstance: {fileID: 1284258307324156869}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1284258307324156871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284258307324156870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efeab4f4e69c3474c83f94c3e21f0cfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yawIpFallback: 10.0.0.1
+  MacPrefix: 2c:cf:67:a2:d7:29
 --- !u!1001 &2530995767292016299
 PrefabInstance:
   m_ObjectHideFlags: 0

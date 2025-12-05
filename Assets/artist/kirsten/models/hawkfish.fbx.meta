@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: aec2930c757f55f4580c02fd866192d3
+guid: 93d9771f14d10b34281777bc91f8dd61
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,9 +31,9 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature.006|clow fish
-      takeName: Armature.006|clow fish
-      internalID: -2015074170104662645
+      name: fin 2|fibs
+      takeName: fin 2|fibs
+      internalID: 4082758135105507465
       firstFrame: 0
       lastFrame: 119
       wrapMode: 0

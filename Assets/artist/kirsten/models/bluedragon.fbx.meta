@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: aec2930c757f55f4580c02fd866192d3
+guid: 304b4038b0b26924cb47a55eee56e967
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -31,9 +31,9 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature.006|clow fish
-      takeName: Armature.006|clow fish
-      internalID: -2015074170104662645
+      name: Armature.005|bluedragon swim
+      takeName: Armature.005|bluedragon swim
+      internalID: -459529074328328167
       firstFrame: 0
       lastFrame: 119
       wrapMode: 0

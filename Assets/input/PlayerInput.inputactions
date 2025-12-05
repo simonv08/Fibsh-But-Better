@@ -196,6 +196,17 @@
                 },
                 {
                     "name": "",
+                    "id": "77185697-195a-4327-9446-82d050c6f85e",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ScanButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "10911b43-6dd8-4a81-bd9c-51b38776ce9e",
                     "path": "<HID::Honeycomb Aeronautical Alpha Flight Controls>/button2",
                     "interactions": "",

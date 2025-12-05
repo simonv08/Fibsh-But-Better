@@ -220,7 +220,7 @@ namespace YawVR
             Debug.Log("YawController initialized");
         }
         
-        private void Start()
+        public void Start()
         {
             if (connectType == ConnectType.ConnectToFirstFoundDevice) AutoConnectFirst();
 

@@ -428,9 +428,9 @@ GameObject:
   - component: {fileID: 3754706572016071484}
   - component: {fileID: 3647135910962568280}
   - component: {fileID: 1172828483231381098}
-  - component: {fileID: 5345466829638331880}
-  - component: {fileID: 3895783192129076898}
   - component: {fileID: 8982057837520143094}
+  - component: {fileID: 3895783192129076898}
+  - component: {fileID: 5345466829638331880}
   m_Layer: 0
   m_Name: player2.0
   m_TagString: Untagged
@@ -552,7 +552,6 @@ MonoBehaviour:
   _rotationSpeed: 40
   _rotationSmooth: 4
   _pitchSmooth: 6
-  _angularDamping: 4
   _resetSpeed: 8
 --- !u!114 &3647135910962568280
 MonoBehaviour:
@@ -586,27 +585,23 @@ MonoBehaviour:
     m_Bits: 64
   _raycastOrigin: {fileID: 2331507650201966134}
   _scanner: {fileID: 0}
---- !u!135 &5345466829638331880
-SphereCollider:
+--- !u!114 &8982057837520143094
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6501981558990433524}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0cb9aa70a22847b5925ee5f067c10a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Camera: {fileID: 3027428662235686464}
+  m_OriginBaseGameObject: {fileID: 6501981558990433524}
+  m_CameraFloorOffsetObject: {fileID: 2884036589692932232}
+  m_RequestedTrackingOriginMode: 0
+  m_CameraYOffset: 1.1176
 --- !u!54 &3895783192129076898
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -634,20 +629,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &8982057837520143094
-MonoBehaviour:
+--- !u!135 &5345466829638331880
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6501981558990433524}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0cb9aa70a22847b5925ee5f067c10a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Camera: {fileID: 3027428662235686464}
-  m_OriginBaseGameObject: {fileID: 6501981558990433524}
-  m_CameraFloorOffsetObject: {fileID: 2884036589692932232}
-  m_RequestedTrackingOriginMode: 0
-  m_CameraYOffset: 1.1176
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

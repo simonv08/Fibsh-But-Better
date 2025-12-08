@@ -80,6 +80,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -89.631
       objectReference: {fileID: 0}
+    - target: {fileID: -3215025471432825077, guid: 58abecea2c2f6f545b0a0badcf8e9a1f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 82f2eaa166db88e4fa1360f7b27db835, type: 2}
     - target: {fileID: 919132149155446097, guid: 58abecea2c2f6f545b0a0badcf8e9a1f, type: 3}
       propertyPath: m_Name
       value: jellyfish

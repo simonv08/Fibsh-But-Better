@@ -80,10 +80,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4156787588339855610, guid: 5c5dfbadaac57114ea475bc1497e1ddc, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b27be74545b2a9b45a333d9270b22dd5, type: 2}
+    - target: {fileID: -1591642694854087524, guid: 5c5dfbadaac57114ea475bc1497e1ddc, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b27be74545b2a9b45a333d9270b22dd5, type: 2}
     - target: {fileID: 919132149155446097, guid: 5c5dfbadaac57114ea475bc1497e1ddc, type: 3}
       propertyPath: m_Name
       value: seabunny
       objectReference: {fileID: 0}
+    - target: {fileID: 1955884315513725772, guid: 5c5dfbadaac57114ea475bc1497e1ddc, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b27be74545b2a9b45a333d9270b22dd5, type: 2}
     - target: {fileID: 8879528566716807029, guid: 5c5dfbadaac57114ea475bc1497e1ddc, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.9997208

@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2e44fda2dd89d14595174d65bca680b, type: 3}
-  m_Name: ClowsFish
+  m_Name: lizardfish
   m_EditorClassIdentifier: 
-  fishName: Clown fish
-  fishDescription: 'ClownFish lengte: 10 Cm Leeftijd: 6 - 10 voedsel: garnalen, plakton,
-    algen en eenoogkreeftjes'
-  image: {fileID: -1910316348, guid: fccf59ea547ab264f9fda65b275e62bd, type: 3}
+  fishName: lizardfish
+  fishDescription: elongated, bottom-dwelling marine fish found in tropical waters,
+    known for their lizard-like heads, pointed snouts, and numerous sharp teeth,
+    used to ambush prey like small fish and crustaceans
+  image: {fileID: -691748725, guid: fb7b92f19d2c16b49893c0c0479b9e26, type: 3}

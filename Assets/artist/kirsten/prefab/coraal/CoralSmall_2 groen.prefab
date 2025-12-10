@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1497137783905253857}
   - component: {fileID: 203914617999026375}
   m_Layer: 0
-  m_Name: CoralSmall_2
+  m_Name: CoralSmall_2 groen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

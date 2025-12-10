@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 120706758090119831}
   - component: {fileID: 2634301882555817275}
   m_Layer: 0
-  m_Name: Tentical_Coral
+  m_Name: Tentical_Coral rood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

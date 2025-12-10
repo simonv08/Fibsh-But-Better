@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2e44fda2dd89d14595174d65bca680b, type: 3}
-  m_Name: ClowsFish
+  m_Name: hawkfish
   m_EditorClassIdentifier: 
-  fishName: Clown fish
-  fishDescription: 'ClownFish lengte: 10 Cm Leeftijd: 6 - 10 voedsel: garnalen, plakton,
-    algen en eenoogkreeftjes'
-  image: {fileID: -1910316348, guid: fccf59ea547ab264f9fda65b275e62bd, type: 3}
+  fishName: hawkfish
+  fishDescription: saltwater fish found in the warm Indo-Pacific
+  image: {fileID: 1538212977, guid: 88518b621f6318c48a664193495db134, type: 3}

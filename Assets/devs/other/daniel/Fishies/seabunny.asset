@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2e44fda2dd89d14595174d65bca680b, type: 3}
-  m_Name: ClowsFish
+  m_Name: seabunny
   m_EditorClassIdentifier: 
-  fishName: Clown fish
-  fishDescription: 'ClownFish lengte: 10 Cm Leeftijd: 6 - 10 voedsel: garnalen, plakton,
-    algen en eenoogkreeftjes'
-  image: {fileID: -1910316348, guid: fccf59ea547ab264f9fda65b275e62bd, type: 3}
+  fishName: seabunny
+  fishDescription: 'lengte: 2,53 Cm Gewicht: 1,4 Gram Leeftijd: 1 jaar voedsel: giftige
+    zee sponsen, zeewier.'
+  image: {fileID: 41744188, guid: 2d113cc0b3cabb848a62f358349541c7, type: 3}

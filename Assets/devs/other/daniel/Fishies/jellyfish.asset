@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2e44fda2dd89d14595174d65bca680b, type: 3}
-  m_Name: ClowsFish
+  m_Name: jellyfish
   m_EditorClassIdentifier: 
-  fishName: Clown fish
-  fishDescription: 'ClownFish lengte: 10 Cm Leeftijd: 6 - 10 voedsel: garnalen, plakton,
-    algen en eenoogkreeftjes'
-  image: {fileID: -1910316348, guid: fccf59ea547ab264f9fda65b275e62bd, type: 3}
+  fishName: jellyfish
+  fishDescription: a free-swimming marine invertebrate with a soft, bell-shaped body
+    made mostly of water, trailing tentacles, and stinging cells (cnidocytes) to
+    catch prey
+  image: {fileID: -889710638, guid: f66a221f563d8074ebaa9a50eb6ba7c1, type: 3}

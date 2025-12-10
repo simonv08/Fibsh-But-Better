@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2e44fda2dd89d14595174d65bca680b, type: 3}
-  m_Name: ClowsFish
+  m_Name: bluefragon
   m_EditorClassIdentifier: 
-  fishName: Clown fish
-  fishDescription: 'ClownFish lengte: 10 Cm Leeftijd: 6 - 10 voedsel: garnalen, plakton,
-    algen en eenoogkreeftjes'
-  image: {fileID: -1910316348, guid: fccf59ea547ab264f9fda65b275e62bd, type: 3}
+  fishName: Blue dragon
+  fishDescription: 'Lengte: 0.33 Meter Gewicht: 1 gram Leeftijd: 1 jaar Voedsel:
+    Kwal, Portugese oorlogsschepen, blauwe knoopkwallen'
+  image: {fileID: 2013337980, guid: 5adc1b9bb584ec84dbf0f2c3fb935505, type: 3}

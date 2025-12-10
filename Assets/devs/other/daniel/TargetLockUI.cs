@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Unity.VisualScripting;
 
 public class TargetLockUI : MonoBehaviour
 {
@@ -30,24 +29,27 @@ public class TargetLockUI : MonoBehaviour
 
     public void ClearTarget()
     {
-        currentTarget= null;
+        currentTarget = null;
         lockPanel.SetActive(false);
-        scanPanel.SetActive(false);
+        // scanPanel.SetActive(false);
     }
 
     private void Update()
     {
         if (currentTarget != null)
-        {
             FollowTarget();
-        }
     }
 
     private void FollowTarget()
     {
-        Vector3 screenPos = mainCamera.WorldToScreenPoint(currentTarget.position);
-        lockPanel.transform.position = screenPos;
+        // Make UI follow the fish position in the world
+        lockPanel.transform.position = currentTarget.position + Vector3.up * 0.2f;
+
+        // Make UI face the camera
+        lockPanel.transform.LookAt(mainCamera.transform);
+        lockPanel.transform.Rotate(0, 180, 0);  // because LookAt flips it
     }
+
 
     public void ShowScan(FishInfo info)
     {
@@ -55,6 +57,6 @@ public class TargetLockUI : MonoBehaviour
         fishDescription.text = info.fishDescription;
         fishImage.sprite = info.image;
 
-        scanPanel.SetActive(true);
+        scanPanel.SetActive(true);  //stays visible until next scan
     }
 }

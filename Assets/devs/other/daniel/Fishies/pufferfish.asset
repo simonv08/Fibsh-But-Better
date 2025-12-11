@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e44fda2dd89d14595174d65bca680b, type: 3}
   m_Name: pufferfish
   m_EditorClassIdentifier: 
-  fishName: pufferfish
-  fishDescription: a slow-moving fish known for its ability to inflate into a ball
-    several times its normal size by gulping water or air, deterring predators
+  fishName: kogelvis
+  fishDescription: 'lengte: 10-40 cm leeftijd: 5 tot 10 jaar voedsel: Slakken, mosselen
+    en kleine garnalen'
   image: {fileID: -466846667, guid: 1b830057911362e4c88fcc04dcbdba35, type: 3}

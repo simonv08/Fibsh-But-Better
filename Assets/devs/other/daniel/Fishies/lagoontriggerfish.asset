@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e44fda2dd89d14595174d65bca680b, type: 3}
   m_Name: lagoontriggerfish
   m_EditorClassIdentifier: 
-  fishName: lagoontriggerfish
-  fishDescription: a small, colorful reef fish from the Indo-Pacific, famous for
-    its unique Picasso-like patterns, strong teeth, and defensive "trigger" mechanism
-    where it locks its dorsal spines to wedge itself in rock crevices
+  fishName: lagune-trekkervis
+  fishDescription: 'lengte: 30 cm gewicht: 0,200 - 1 kg leeftijd: tot 10 jaar voedsel:
+    wormen, slakken en algen. '
   image: {fileID: -950428853, guid: 59df273b3d9bff64e890fd622cd3594d, type: 3}

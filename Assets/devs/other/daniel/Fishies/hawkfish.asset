@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: hawkfish
   m_EditorClassIdentifier: 
   fishName: hawkfish
-  fishDescription: saltwater fish found in the warm Indo-Pacific
+  fishDescription: 'lengte: 10 cm gewicht: 2,2 kg voedsel meat shrimp'
   image: {fileID: 1538212977, guid: 88518b621f6318c48a664193495db134, type: 3}

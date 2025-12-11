@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e44fda2dd89d14595174d65bca680b, type: 3}
   m_Name: jellyfish
   m_EditorClassIdentifier: 
-  fishName: jellyfish
-  fishDescription: a free-swimming marine invertebrate with a soft, bell-shaped body
-    made mostly of water, trailing tentacles, and stinging cells (cnidocytes) to
-    catch prey
+  fishName: kwal
+  fishDescription: ongewervelde holtedieren die voor het grootste deel uit water
+    bestaan en meedrijven met de stroming
   image: {fileID: -889710638, guid: f66a221f563d8074ebaa9a50eb6ba7c1, type: 3}

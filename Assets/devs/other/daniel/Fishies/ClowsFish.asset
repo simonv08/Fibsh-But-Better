@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ClowsFish
   m_EditorClassIdentifier: 
   fishName: Clown fish
-  fishDescription: 'ClownFish lengte: 10 Cm Leeftijd: 6 - 10 voedsel: garnalen, plakton,
-    algen en eenoogkreeftjes'
+  fishDescription: 'lengte: 10 Cm Leeftijd: 6 - 10 voedsel: garnalen, plakton, algen
+    en eenoogkreeftjes'
   image: {fileID: -1910316348, guid: fccf59ea547ab264f9fda65b275e62bd, type: 3}

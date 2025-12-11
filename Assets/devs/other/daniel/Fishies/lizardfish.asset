@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e44fda2dd89d14595174d65bca680b, type: 3}
   m_Name: lizardfish
   m_EditorClassIdentifier: 
-  fishName: lizardfish
-  fishDescription: elongated, bottom-dwelling marine fish found in tropical waters,
-    known for their lizard-like heads, pointed snouts, and numerous sharp teeth,
-    used to ambush prey like small fish and crustaceans
+  fishName: hagedisvis
+  fishDescription: 'lengte: rond de 20-40 cm gewicht: 0,9 - 1,8 kg leeftijd: 9 jaar
+    Voedsel:  Kleine vissen en schaaldieren.'
   image: {fileID: -691748725, guid: fb7b92f19d2c16b49893c0c0479b9e26, type: 3}

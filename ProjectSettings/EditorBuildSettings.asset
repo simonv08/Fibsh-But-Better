@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Simon.unity
-    guid: 3e6a3ead639b73b42bd5ccf4db740045
+    path: Assets/Scenes/THE LAST SCENE.unity
+    guid: a0a086ed9bb469349b225d68e18b2ee9
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1d45955403c0d494780fa4a976661f03, type: 2}
